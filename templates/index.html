@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container text-center">
+    <p class="display-4">Expense List</p>
+    <a href = "{{url_for('expense.create_expense')}}" class="btn btn-success">Add New Expense</a>
+    <a href = "{{url_for('expense.view_expenses', order='asc')}}" class="btn btn-outline-success">Sort By Amount Ascending</a>
+    <a href = "{{url_for('expense.view_expenses', order='desc')}}" class="btn btn-outline-success">Sort By Amount Descending</a>
+    <table class="table">
+        <thead>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{expense.desc}}</td>
+                <td>${{expense.amount}}</td>
+                <td>{{expense.date}}</td>
+                <td><div class="row justify-content-center">
+                        <div class="col-3"><a class="btn btn-warning" href = "{{url_for('expense.update_expense', id=expense.id)}}">Update</a></div>
+                        <div class="col-3"><form method="POST" action="{{url_for('expense.delete_expense', id=expense.id)}}">
+                        <button type="submit" class="btn btn-danger">Delete</button></form></div>
+                </div></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+    <p class="display-4">Update Expense</p>
+    <form method="POST" action="#">
+        <div class = "mb-3">
+            <label class="form-label">Description</label>
+            <input class="form-control" name = "desc" type="text" value="{{expense.desc}}" />
+        </div>
+        <div class = "mb-3">
+            <label class="form-label">Amount</label>
+            <input class="form-control" name = "amount" type="text" value="{{expense.amount}}" />
+        </div>
+        <div class = "mb-3">
+            <label class="form-label">Date</label>
+            <input class="form-control" name = "date" type="date" value="{{expense.date}}" />
+        </div>
+        <div class = "mb-3">
+            <button class="btn btn-success" type="submit">Update Expense</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
